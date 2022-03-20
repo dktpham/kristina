@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/kristina/static/css/main.40231de9.css",
+    "main.js": "/kristina/static/js/main.09f0ea79.js",
+    "index.html": "/kristina/index.html",
+    "main.40231de9.css.map": "/kristina/static/css/main.40231de9.css.map",
+    "main.09f0ea79.js.map": "/kristina/static/js/main.09f0ea79.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.40231de9.css",
+    "static/js/main.09f0ea79.js"
+  ]
+}
