@@ -3,9 +3,9 @@ import {
   Flex,
   ProgressCircle,
   Provider,
-} from "@adobe/react-spectrum";
-import Table from "./Table";
-import { HookState, useFetchGoogleSheets } from "./api";
+} from "@adobe/react-spectrum"
+import Table from "./Table"
+import { HookState, useFetchGoogleSheets } from "./api"
 
 export default function App() {
   return (
@@ -24,12 +24,12 @@ export default function App() {
                     <Table sheet={sheet} key={index} />
                   ))}
               </>
-            );
+            )
           }}
         </GoogleSheetDataProvider>
       </Flex>
     </Provider>
-  );
+  )
 }
 
 function GoogleSheetDataProvider({
@@ -37,10 +37,10 @@ function GoogleSheetDataProvider({
   sheetId,
   children,
 }: {
-  apiKey: string;
-  sheetId: string;
-  children: (state: HookState) => JSX.Element;
+  apiKey: string
+  sheetId: string
+  children: (state: HookState) => JSX.Element
 }) {
-  const state = useFetchGoogleSheets({ sheetId, apiKey });
-  return children(state);
+  const state = useFetchGoogleSheets({ sheetId, apiKey })
+  return children(state)
 }

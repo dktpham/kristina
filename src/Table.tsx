@@ -7,12 +7,12 @@ import {
   TableBody,
   TableHeader,
   TableView,
-} from "@adobe/react-spectrum";
-import { Sheet } from "./api";
+} from "@adobe/react-spectrum"
+import { Sheet } from "./api"
 
 export default function Table({ sheet }: { sheet: Sheet }): JSX.Element {
-  const headers: Array<string> = sheet.values[0];
-  const sheetTitle = sheet.range?.split("!")[0];
+  const headers: Array<string> = sheet.values[0]
+  const sheetTitle = sheet.range?.split("!")[0]
 
   return (
     <>
@@ -35,7 +35,7 @@ export default function Table({ sheet }: { sheet: Sheet }): JSX.Element {
       </TableView>
       <Divider />
     </>
-  );
+  )
 }
 
 function createCells(
@@ -45,14 +45,14 @@ function createCells(
   rowIndex: number,
   sheetTitle?: string
 ) {
-  const countDifference = columnCount - columns.length;
+  const countDifference = columnCount - columns.length
   const finalColumns =
     countDifference > 0
       ? columns.concat(new Array(countDifference).fill(""))
-      : columns;
+      : columns
   return finalColumns.map((column, index) => (
     <Cell key={`${sheetTitle}-row-${rowIndex}-cell-${headers[index]}`}>
       {column}
     </Cell>
-  ));
+  ))
 }
