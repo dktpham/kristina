@@ -1,30 +1,30 @@
 /* eslint-env node */
 module.exports = {
   env: {
-    browser: true,
+    browser: true
   },
   extends: [
-    "prettier",
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended",
+    'prettier',
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:@typescript-eslint/recommended'
   ],
-  plugins: ["prettier", "react", "@typescript-eslint"],
+  plugins: ['prettier', 'react', '@typescript-eslint'],
   rules: {
-    "react/react-in-jsx-scope": "off",
-    quotes: ["error", "double"],
-    semi: [2, "never"],
+    'react/react-in-jsx-scope': 'off',
+    quotes: ['error', 'single'],
+    semi: [2, 'never']
   },
   parserOptions: {
-    sourceType: "module",
-    ecmaVersion: "latest",
+    sourceType: 'module',
+    ecmaVersion: 'latest',
     requireConfigFile: false,
     ecmaFeatures: {
-      jsx: true,
+      jsx: true
     },
     babelOptions: {
-      presets: ["@babel/preset-react"],
+      presets: ['@babel/preset-react']
     },
-    parser: "@babel/eslint-parser",
-  },
+    parser: '@babel/eslint-parser'
+  }
 }

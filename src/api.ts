@@ -1,6 +1,7 @@
-import { useMemo, useState } from "react"
+import { useMemo, useState } from 'react'
+import wretch from 'wretch'
 
-const SHEET_API_URL = "https://sheets.googleapis.com/v4/spreadsheets/"
+const SHEET_API_URL = 'https://sheets.googleapis.com/v4/spreadsheets/'
 
 export interface SheetProperties {
   sheets: Array<{
@@ -24,9 +25,9 @@ export interface SheetResponse {
 export type HookState = { data: SheetResponse; loading: boolean }
 
 export function useFetchGoogleSheets({
-  sheetId,
-  apiKey,
-}: {
+                                       sheetId,
+                                       apiKey
+                                     }: {
   sheetId: string
   apiKey: string
 }): HookState {
@@ -36,29 +37,26 @@ export function useFetchGoogleSheets({
 
   useMemo(() => {
     if (sheets === undefined) {
-      console.log("fetch sheets")
+      console.log('fetch sheets')
       setLoading(true)
-      fetch(
-        `${SHEET_API_URL}${sheetId}?` +
-          new URLSearchParams({
-            fields: "sheets/properties/title",
-            key: apiKey,
-          })
-      )
-        .then((response) => response.json())
-        .then((jsonResponse: SheetProperties) => setSheets(jsonResponse))
+      wretch(SHEET_API_URL)
+        .url(sheetId)
+        .query({
+          fields: 'sheets/properties/title',
+          key: apiKey
+        }).get()
+        .json<SheetProperties>()
+        .then((jsonResponse) => setSheets(jsonResponse))
     }
   }, [sheets, sheetId, apiKey])
 
   useMemo(() => {
     if (sheets !== undefined && data.valueRanges.length === 0) {
-      console.log("fetch data")
-      const params = new URLSearchParams({ key: apiKey })
-      sheets.sheets.forEach((sheet) =>
-        params.append("ranges", sheet.properties.title)
-      )
-      fetch(`${SHEET_API_URL}${sheetId}/values:batchGet?` + params)
-        .then((response) => response.json())
+      console.log('fetch data')
+      wretch(`${SHEET_API_URL}${sheetId}/values:batchGet`)
+        .query({ key: apiKey, ranges: sheets.sheets.map(sheets => sheets.properties.title) })
+        .get()
+        .json<SheetResponse>()
         .then((data) => setData(data))
         .finally(() => setLoading(false))
     }
