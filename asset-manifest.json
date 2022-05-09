@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.css": "/kristina/static/css/main.40231de9.css",
-    "main.js": "/kristina/static/js/main.1f71a815.js",
+    "main.css": "/kristina/static/css/main.a299fbdc.css",
+    "main.js": "/kristina/static/js/main.b8e46202.js",
+    "static/media/RobotoMono-VariableFont_wght.ttf": "/kristina/static/media/RobotoMono-VariableFont_wght.9ec32603cb86699d7770.ttf",
     "index.html": "/kristina/index.html",
-    "main.40231de9.css.map": "/kristina/static/css/main.40231de9.css.map",
-    "main.1f71a815.js.map": "/kristina/static/js/main.1f71a815.js.map"
+    "main.a299fbdc.css.map": "/kristina/static/css/main.a299fbdc.css.map",
+    "main.b8e46202.js.map": "/kristina/static/js/main.b8e46202.js.map"
   },
   "entrypoints": [
-    "static/css/main.40231de9.css",
-    "static/js/main.1f71a815.js"
+    "static/css/main.a299fbdc.css",
+    "static/js/main.b8e46202.js"
   ]
 }
