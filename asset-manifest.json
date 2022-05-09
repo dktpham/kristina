@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/kristina/static/css/main.a299fbdc.css",
-    "main.js": "/kristina/static/js/main.b8e46202.js",
+    "main.js": "/kristina/static/js/main.c2132668.js",
     "static/media/RobotoMono-VariableFont_wght.ttf": "/kristina/static/media/RobotoMono-VariableFont_wght.9ec32603cb86699d7770.ttf",
     "index.html": "/kristina/index.html",
     "main.a299fbdc.css.map": "/kristina/static/css/main.a299fbdc.css.map",
-    "main.b8e46202.js.map": "/kristina/static/js/main.b8e46202.js.map"
+    "main.c2132668.js.map": "/kristina/static/js/main.c2132668.js.map"
   },
   "entrypoints": [
     "static/css/main.a299fbdc.css",
-    "static/js/main.b8e46202.js"
+    "static/js/main.c2132668.js"
   ]
 }
