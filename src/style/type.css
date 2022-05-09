@@ -1,0 +1,71 @@
+ul:focus {
+    border: 1px solid #000;
+}
+
+.center {
+    display: flex;
+    justify-content: left;
+    align-content: center;
+    height: 100vh;
+    background-color: #121520;
+    padding-left: 15%;
+    padding-right: 15%;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.wordbox {
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+}
+
+.hidden-input {
+    position: absolute;
+    height: 0;
+    width: 0;
+}
+
+.caret {
+    transition: left 0.1s linear;
+    position: absolute;
+    color: #fff;
+    animation: blink 1s infinite;
+    font-family: 'RobotoMono', monospace;
+    font-size: 2.5rem;
+    line-height: 3rem;
+}
+
+@keyframes blink {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+.letter {
+    font-family: 'RobotoMono', monospace;
+    font-size: 2.5rem;
+    line-height: 3rem;
+    position: relative;
+}
+
+.letter.space {
+    /*color: rgba(0, 0, 0, 0) !important;*/
+}
+
+@font-face {
+    font-family: 'RobotoMono';
+    src: local('RobotoMono'), url('../fonts/RobotoMono-VariableFont_wght.ttf') format('ttf');
+}
+
+.result {
+    font-family: 'RobotoMono', monospace;
+    font-size: 2.5rem;
+    line-height: 3rem;
+    color: #fff;
+    align-items: center;
+}
