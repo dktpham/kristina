@@ -1,10 +1,9 @@
 import React, { createContext, useContext, useEffect } from 'react'
-import { TypingTestContext } from './Type'
-import { PhaseType } from 'react-typing-game-hook'
+import { NewContext } from './Type'
 
 export function Caret() {
   const { offset, typing, setTyping } = useCaret()
-  const { states } = useContext(TypingTestContext)
+  const { times } = useContext(NewContext)
 
   useEffect(() => {
     if (typing) {
@@ -14,7 +13,7 @@ export function Caret() {
 
   return (
     <>
-      {states?.phase !== PhaseType.Ended && (
+      {times.end === 0 && (
         <span
           className={'caret'}
           style={{

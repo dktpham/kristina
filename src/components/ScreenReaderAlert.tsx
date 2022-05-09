@@ -1,7 +1,6 @@
 import React, { Dispatch, SetStateAction, useContext, useEffect } from 'react'
-import { TypingTestContext } from './Type'
-import { getWords } from '../utils'
 import Delayed from './Delayed'
+import { NewContext } from './Type'
 
 interface ScreenReaderAlertState {
   alerts: string[]
@@ -14,7 +13,7 @@ export const ScreenReaderAlertContext = React.createContext<ScreenReaderAlertSta
 })
 
 export function ScreenReaderAlert() {
-  const { testtext, states } = useContext(TypingTestContext)
+  const { wordState } = useContext(NewContext)
   const { alerts, setAlerts } = useContext(ScreenReaderAlertContext)
 
   useEffect(() => {
@@ -28,7 +27,13 @@ export function ScreenReaderAlert() {
 
   return (
     <>
-      <Alert text={getWords(testtext, (states?.currIndex || 0) + 1, 2)} />
+      <Alert
+        text={[
+          wordState[wordState.currentWordIndex]?.correctChars.join(''),
+          wordState[wordState.currentWordIndex + 1]?.correctChars.join(''),
+          wordState[wordState.currentWordIndex + 2]?.correctChars.join(''),
+        ].join('')}
+      />
       <Alert text={alerts[0]} />
     </>
   )

@@ -1,14 +1,14 @@
 import React, { useContext, useEffect, useRef } from 'react'
 import clsx from 'clsx'
-import { CharStateType } from 'react-typing-game-hook'
-import { TypingTestContext } from './Type'
+import { NewContext } from './Type'
 import { useCaret } from './Caret'
+import { CharState } from './useTypingTest'
 
-export function Letter({ char, index }: { char: string; index: number }) {
-  const { states } = useContext(TypingTestContext)
+export function Letter({ wordIndex, charIndex }: { charIndex: number; wordIndex: number }) {
+  const { wordState } = useContext(NewContext)
   const { setOffset } = useCaret()
   const ref = useRef<HTMLSpanElement>(null)
-  const isActive = (states?.currIndex || 0) + 1 === index
+  const isActive = wordState.currentWordIndex === wordIndex && wordState.currentCharIndex === charIndex
 
   useEffect(() => {
     if (isActive) {
@@ -19,17 +19,18 @@ export function Letter({ char, index }: { char: string; index: number }) {
   return (
     <span
       ref={ref}
-      id={`${index}`}
       style={{
         color: clsx({
-          '#fff': states?.charsState[index] === CharStateType.Correct,
-          '#da3333': states?.charsState[index] === CharStateType.Incorrect,
-          '#676e8a': states?.charsState[index] === CharStateType.Incomplete,
+          '#fff': wordState[wordIndex].inputChars[charIndex].state === CharState.Correct,
+          '#da3333':
+            wordState[wordIndex].inputChars[charIndex].state === CharState.Incorrect ||
+            wordState[wordIndex].inputChars[charIndex].state === CharState.Additional,
+          '#676e8a': wordState[wordIndex].inputChars[charIndex].state === CharState.Untouched,
         }),
       }}
       className={'letter'}
     >
-      {char}
+      {wordState[wordIndex].inputChars[charIndex].char}
     </span>
   )
 }
